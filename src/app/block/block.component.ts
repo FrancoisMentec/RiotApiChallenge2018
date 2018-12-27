@@ -1,4 +1,4 @@
-import { Component, OnInit, Host, Input } from '@angular/core';
+import { Component, OnInit, Host, Input, ViewChild } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 
@@ -9,49 +9,69 @@ import { EditGridService } from '../edit-grid.service';
 })
 export class BlockComponent implements OnInit {
   parent : GridLayoutComponent;
-  editGridService: EditGridService;
-  @Input() cols : Integer = 1;
-  @Input() lines : Integer = 1;
+  @Input() cols : number = 1;
+  @Input() lines : number = 1;
   @Input() x : Integer;
   @Input() y : Integer;
-  xClick: Integer;
-  yClick: Integer;
+  /*xClick: Integer;
+  yClick: Integer;*/
 
   constructor(@Host() parent: GridLayoutComponent, private editGridService: EditGridService) {
     this.parent = parent;
-    this.editGridService = editGridService;
   }
 
   ngOnInit() {
   }
 
-  get margin(): Integer {
+  set cols(v: any) {
+    this._cols = typeof v == 'number'
+      ? v
+      : parseInt(v)
+  }
+
+  get cols(): number {
+    return this._cols
+  }
+
+  set lines(v: any) {
+    this._lines = typeof v == 'number'
+      ? v
+      : parseInt(v)
+  }
+
+  get lines(): number {
+    return this._lines
+  }
+
+  get margin(): number {
     return this.parent.margin / 2;
   }
 
-  get width(): Integer {
+  get width(): number {
     return this.cols * this.parent.blocksWidth + (this.cols - 1) * this.parent.margin;
   }
 
-  get height(): Integer {
+  get height(): number {
     return this.lines * this.parent.blocksHeight + (this.lines - 1) * this.parent.margin;
   }
 
-  get left(): Integer {
+  get left(): number {
     return this.x * (this.parent.blocksWidth + this.parent.margin) + this.margin;
   }
 
-  get top(): Integer {
+  get top(): number {
     return this.y * (this.parent.blocksHeight + this.parent.margin);
   }
 
-  mouseDown(e: any) {
-    this.xClick = e.offsetX;
-    this.yClick = e.offsetY;
+  startDrag(e: any) {
+    /*this.xClick = e.offsetX;
+    this.yClick = e.offsetY;*/
     this.editGridService.draggedBlock = this;
-    /*console.log(e)
-    document.onmousemove = e => {
+  }
 
-    }*/
+  startResize(e: any) {
+    e.stopPropagation()
+    console.log('startResize')
+    this.editGridService.resizedBlock = this;
   }
 }

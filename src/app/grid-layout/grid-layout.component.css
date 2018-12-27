@@ -19,7 +19,7 @@
 }
 
 .grid-view {
-  transition: 0.2s;
+  transition: 0.4s;
   opacity: 0;
 }
 
@@ -27,4 +27,5 @@
   display: inline-block;
   position: relative;
   background-color: rgb(100,65,215);
+  border-radius: 2px;
 }

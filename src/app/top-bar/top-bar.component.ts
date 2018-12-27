@@ -7,10 +7,8 @@ import { EditGridService } from '../edit-grid.service';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
-  editGridService: EditGridService;
 
   constructor(private editGridService: EditGridService) {
-    this.editGridService = editGridService;
   }
 
   ngOnInit() {
