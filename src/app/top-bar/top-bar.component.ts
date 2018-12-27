@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+
 import { EditGridService } from '../edit-grid.service';
 
 @Component({
@@ -8,11 +10,23 @@ import { EditGridService } from '../edit-grid.service';
 })
 export class TopBarComponent implements OnInit {
   minimized : boolean = false;
+  summoner : String;
+  region : String = 'euw';
 
-  constructor(private editGridService: EditGridService) {
+  constructor(private editGridService: EditGridService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.router.events.subscribe(val => {
+      if (val instanceof NavigationEnd) {
+        let params = val.url.replace(/^\//, '').split('/')
+        this.minimized = val.url != '/'
+        if (params[0] === 'summoner') {
+          this.region = params[1]
+          this.summoner = params[2]
+        }
+      }
+    })
   }
 
   get miniClass() : String {
@@ -27,5 +41,15 @@ export class TopBarComponent implements OnInit {
 
   toggleMinimized() {
     this.minimized = !this.minimized
+  }
+
+  search() {
+    this.router.navigate(['/summoner', this.region, this.summoner])
+  }
+
+  searchKeydown(e: any) {
+    if (e.keyCode === 13) {
+      this.search()
+    }
   }
 }

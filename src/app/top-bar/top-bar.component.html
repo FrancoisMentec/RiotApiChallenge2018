@@ -10,8 +10,8 @@
   </h1>
 
   <div class="search-wrapper">
-    <input class="search-input" placeholder="Search">
-    <button>EUW</button>
-    <button class="icon search-button">search</button>
+    <input class="search-input" type="text" placeholder="Search" [(ngModel)]="summoner" (keydown)="searchKeydown($event)">
+    <button id="region">{{ region }}</button>
+    <button class="icon search-button" (click)="search()">search</button>
   </div>
 </div>
