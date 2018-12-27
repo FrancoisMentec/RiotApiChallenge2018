@@ -71,7 +71,6 @@ export class BlockComponent implements OnInit {
 
   startResize(e: any) {
     e.stopPropagation()
-    console.log('startResize')
     this.editGridService.resizedBlock = this;
   }
 }

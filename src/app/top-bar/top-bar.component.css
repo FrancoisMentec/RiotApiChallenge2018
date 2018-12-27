@@ -1,11 +1,30 @@
-.top-bar {
+#top-padding {
+  height: 64px;
+}
+
+#top-bar {
+  transition: 0.4s;
+  position: relative;
   box-sizing: border-box;
   width: 100%;
-  /*position: fixed;
-  top: 0;
-  left: 0;*/
-  padding: 24px;
+  height: 268px;
+  padding: 0;
   text-align: center;
+}
+
+#top-bar.mini {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--main-bg-color);
+  z-index: 100;
+  height: 64px;
+  line-height: 64px;
+  text-align: left;
+}
+
+.mini > * {
+  vertical-align: middle;
 }
 
 /* option bar */
@@ -13,9 +32,12 @@
   position: fixed;
   top: 0;
   right: 0;
-  height: 56px;
-  line-height: 56px;
-  padding-right: 12px;
+  height: 64px;
+  line-height: 64px;
+}
+
+.option-bar > * {
+  margin-right: 12px;
 }
 
 .edit-toggle {
@@ -46,7 +68,7 @@
   text-align: center;
   color: white;
   border-radius: 50%;
-  background-color: rgba(100,65,215);
+  background-color: var(--main-bg-color);
 }
 
 .edit-toggle:checked::before {
@@ -55,37 +77,72 @@
 }
 
 /* title */
-.title {
-  text-align: center;
-}
-
-h1 {
+#title {
+  transition: 0.4s;
   display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   text-shadow: 0 1px 2px rgba(0,0,0,0.224);
   background-color: rgba(100,65,215,0.64);
   padding: 12px;
+  width: 850px;
+  text-align: center;
+  margin-top: 64px;
+}
+
+.mini #title {
+  font-size: 24px;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: auto;
+  /*left: 0;
+  transform: none;*/
 }
 
 /* Search */
 .search-wrapper {
+  transition: 0.4s;
+  position: fixed;
+  top: 226px;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-block;
   width: auto;
-  height: auto;
+  height: 64px;
+  line-height: 64px;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.224);
 }
 
-button {
+.mini .search-wrapper {
+  height: 54px;
+  line-height: 54px;
+  left: 5px;
+  transform: none;
+  top: 5px;
+}
+
+.search-wrapper button {
   margin-right: 14px;
+  height: 42px;
 }
 
 .search-input {
+  box-sizing: border-box;
+  vertical-align: top;
   min-width: 200px;
-  height: 64px;
+  height: 100%;
   border: none;
   background-color: transparent;
   outline: none;
   padding:  0 14px 0 14px;
   margin: 0;
+}
+
+.search-button {
+
 }

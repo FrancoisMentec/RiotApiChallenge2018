@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Variable */
+
+:root {
+  --main-bg-color: rgba(100,65,215);
+}
+
 /* Fonts */
 @font-face {
   font-family: Roboto;
@@ -47,6 +53,8 @@ h1 {
   font-size: 5em;
   font-weight: normal;
   font-style: normal;
+  margin-top: 42px;
+  margin-bottom: 42px;
 }
 
 h1 i {
@@ -66,4 +74,34 @@ html, body {
   background-repeat: no-repeat;
   color: white;
   font-family: Roboto;
+}
+
+button {
+  transition: 0.4s;
+  background-color: rgba(100,65,215);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-family: Roboto-Bold;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+  padding-left: 8px;
+  padding-right: 8px;
+  outline: none;
+  vertical-align: middle;
+}
+
+button:hover {
+  background-color: rgba(116,76,205);
+}
+
+button:active {
+  transition: 0;
+  background-color: rgb(78,51,168);
+}
+
+button.icon {
+  font-family: Material-Icons;
+  font-size: 24px;
 }

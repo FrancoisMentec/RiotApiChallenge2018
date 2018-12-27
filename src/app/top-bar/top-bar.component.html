@@ -1,17 +1,17 @@
-<div class="top-bar">
+<div id="top-padding"></div>
+<div id="top-bar" [ngClass]="miniClass">
   <div class="option-bar">
+    <button class="icon" (click)="toggleMinimized()">menu</button>
     <input type="checkbox" class="edit-toggle" (click)="editToggleClicked($event)">
   </div>
 
-  <div class="title">
-    <h1>
-      Riot <b>API</b> Challenge <i>2018</i>
-    </h1>
-  </div>
+  <h1 id="title">
+    Riot <b>API</b> Challenge <i>2018</i>
+  </h1>
 
   <div class="search-wrapper">
     <input class="search-input" placeholder="Search">
     <button>EUW</button>
-    <button>look</button>
+    <button class="icon search-button">search</button>
   </div>
 </div>
