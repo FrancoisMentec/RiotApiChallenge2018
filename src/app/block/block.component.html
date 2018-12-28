@@ -4,6 +4,7 @@
       <div class="edit-text">
         Drag to move around
       </div>
+      <div class="delete" (click)="delete($event)">delete</div>
       <div class="resize" (mousedown)="startResize($event)">grain</div>
     </div>
     <ng-content></ng-content>

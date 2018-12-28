@@ -45,3 +45,21 @@
   line-height: 19px;
   cursor: nw-resize;
 }
+
+.delete {
+  transition: 0.4s;
+  font-family: Material-Icons;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: var(--danger-color);
+}

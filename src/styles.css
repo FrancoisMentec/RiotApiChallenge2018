@@ -3,7 +3,8 @@
 /* Variable */
 
 :root {
-  --main-bg-color: rgba(100,65,215);
+  --main-bg-color: rgb(100,65,215);
+  --danger-color: #E53935;
 }
 
 /* Fonts */

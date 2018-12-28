@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Injectable } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ComponentRef } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 
@@ -71,5 +71,18 @@ export class BlockComponent implements OnInit {
   startResize(e: any) {
     e.stopPropagation()
     this.editGridService.resizedBlock = this;
+  }
+
+  delete(e: any) {
+    //console.log(this)
+    /*let index = this.parent.blocksContainer.indexOf(this)
+    console.log(this)
+    console.log(index)
+    this.parent.blocksContainer.remove(index)*/
+    /*console.log(this.componentRef)
+    let index = this.parent.blocksContainer.indexOf(this.componentRef)
+    console.log(index)
+    this.parent.blocksContainer.remove(index)*/
+    this.parent.removeBlock(this)
   }
 }

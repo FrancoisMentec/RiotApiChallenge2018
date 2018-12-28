@@ -22,18 +22,23 @@
 
 .grid-view {
   transition: 0.4s;
-  opacity: 0;
-}
-
-.grid-view.visible {
-  opacity: 0.6;
 }
 
 .grid-view-cell {
+  transition: 0.2s;
   display: inline-block;
   position: relative;
   background-color: var(--main-bg-color);
   border-radius: 2px;
+  opacity: 0;
+}
+
+.visible .grid-view-cell {
+  opacity: 0.6;
+}
+
+.visible .grid-view-cell:hover {
+  opacity: 1;
 }
 
 .visible .grid-view-cell {
@@ -42,6 +47,7 @@
 }
 
 .grid-view-cell::before {
+  transition: 0.2s;
   content: "add_circle";
   display: inline-block;
   position: absolute;
@@ -50,4 +56,9 @@
   transform: translate(-50%,-50%);
   font-family: Material-Icons;
   font-size: 32px;
+  opacity: 0;
+}
+
+.grid-view-cell:hover::before {
+  opacity: 1;
 }
