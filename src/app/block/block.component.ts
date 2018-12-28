@@ -1,4 +1,4 @@
-import { Component, OnInit, Host, Input, ViewChild, Injectable } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Injectable } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 
@@ -14,11 +14,14 @@ export class BlockComponent implements OnInit {
   @Input() x : Integer = 0;
   @Input() y : Integer = 0;
 
-  constructor(@Host() parent: GridLayoutComponent, private editGridService: EditGridService) {
-    this.parent = parent;
+  constructor(private editGridService: EditGridService) {
   }
 
   ngOnInit() {
+  }
+
+  get parent() {
+    return this.editGridService.gridLayout
   }
 
   set cols(v: any) {

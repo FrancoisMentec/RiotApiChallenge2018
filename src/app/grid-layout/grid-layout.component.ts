@@ -1,6 +1,7 @@
-import { Component, ViewChild, ComponentFactoryResolver, Host } from '@angular/core';
+import { Component, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { EditGridService } from '../edit-grid.service';
-import { Block } from '../block/block.component'
+import { BlockComponent } from '../block/block.component'
+import { WelcomeComponent } from '../welcome/welcome.component'
 
 @Component({
   selector: 'app-grid-layout',
@@ -9,6 +10,7 @@ import { Block } from '../block/block.component'
 })
 export class GridLayoutComponent {
   @ViewChild('grid') grid;
+  @ViewChild('grid', { read: ViewContainerRef }) blockContainer: ViewContainerRef;
   blocksWidth = 250;
   blocksHeight = 82;
   margin = 8;
@@ -19,6 +21,7 @@ export class GridLayoutComponent {
   grid = []
 
   constructor(private resolver: ComponentFactoryResolver, private editGridService: EditGridService) {
+    this.editGridService.gridLayout = this
   }
 
   get viewClass() {
@@ -47,9 +50,11 @@ export class GridLayoutComponent {
 
   addBlock(e: any) {
     let coord = this.getCoord(e.clientX, e.clientY)
-    const b = this.resolver.resolveComponentFactory(Block)
-    let block = this.grid.createComponent(b)
-    block.x = coord.x
-    block.y = coord.y
+    let factory = this.resolver.resolveComponentFactory(BlockComponent);
+    let block = factory.create(this.blockContainer.parentInjector);
+    console.log(block)
+    block.instance.x = coord.x
+    block.instance.y = coord.y
+    this.blockContainer.insert(block.hostView);
   }
 }
