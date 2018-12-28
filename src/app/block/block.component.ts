@@ -1,20 +1,18 @@
-import { Component, OnInit, Host, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Host, Input, ViewChild, Injectable } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 
 @Component({
-  selector: 'app-block',
+  selector: 'block',
   templateUrl: './block.component.html',
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit {
-  parent : GridLayoutComponent;
+  parent: GridLayoutComponent;
   @Input() cols : number = 1;
   @Input() lines : number = 1;
-  @Input() x : Integer;
-  @Input() y : Integer;
-  /*xClick: Integer;
-  yClick: Integer;*/
+  @Input() x : Integer = 0;
+  @Input() y : Integer = 0;
 
   constructor(@Host() parent: GridLayoutComponent, private editGridService: EditGridService) {
     this.parent = parent;
@@ -64,8 +62,6 @@ export class BlockComponent implements OnInit {
   }
 
   startDrag(e: any) {
-    /*this.xClick = e.offsetX;
-    this.yClick = e.offsetY;*/
     this.editGridService.draggedBlock = this;
   }
 

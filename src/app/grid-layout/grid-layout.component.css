@@ -17,6 +17,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
 
 .grid-view {
@@ -24,9 +25,29 @@
   opacity: 0;
 }
 
+.grid-view.visible {
+  opacity: 0.6;
+}
+
 .grid-view-cell {
   display: inline-block;
   position: relative;
-  background-color: rgb(100,65,215);
+  background-color: var(--main-bg-color);
   border-radius: 2px;
+}
+
+.visible .grid-view-cell {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.grid-view-cell::before {
+  content: "add_circle";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: Material-Icons;
+  font-size: 32px;
 }

@@ -1,13 +1,14 @@
 <div class="wrapper">
   <div class="grid-wrapper" [ngStyle]="{'width.px': width, 'height.px': height}">
-    <div class="grid-view" [ngStyle]="{'opacity': viewOpacity}">
-      <div class="grid-view-cell" [ngStyle]="{'width.px': blocksWidth, 'height.px': blocksHeight, 'margin.px': margin / 2}" *ngFor="let number of arr(cols * lines)"></div>
+    <div class="grid-view" [ngClass]="viewClass">
+      <div class="grid-view-cell" [ngStyle]="{'width.px': blocksWidth, 'height.px': blocksHeight, 'margin.px': margin / 2}"
+      (mousedown)="addBlock($event)" *ngFor="let number of arr(cols * lines)"></div>
     </div>
     <div class="grid" #grid>
-      <app-block x="0" y="0">1</app-block>
-      <app-block x="1" y="0" cols="3" lines="3">2</app-block>
-      <app-block x="4" y="0" lines="3">3</app-block>
-      <app-block x="0" y="1" lines="2">4</app-block>
+      <block x="0" y="0">1</block>
+      <block x="1" y="0" cols="3" lines="3">2</block>
+      <block x="4" y="0" lines="3">3</block>
+      <block x="0" y="1" lines="2">4</block>
     </div>
   </div>
 </div>

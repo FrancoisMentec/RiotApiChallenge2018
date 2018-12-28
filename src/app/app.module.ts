@@ -24,6 +24,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BlockComponent]
 })
 export class AppModule { }
