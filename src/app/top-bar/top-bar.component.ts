@@ -36,7 +36,7 @@ export class TopBarComponent implements OnInit {
   }
 
   editToggleClicked(e: any) {
-    this.editGridService.edit = e.toElement.checked;
+    this.editGridService.edit = e.target.checked;
   }
 
   toggleMinimized() {
