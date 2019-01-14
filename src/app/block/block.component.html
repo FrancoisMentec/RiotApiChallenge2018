@@ -1,6 +1,6 @@
 <div class="block" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}">
   <div class="wrapper">
-    <div class="edit" [ngStyle]="{'display': editGridService.edit ? 'none' : 'none'}" (mousedown)="startDrag($event)">
+    <div class="edit" [ngStyle]="{'display': editGridService.edit ? 'block' : 'none'}" (mousedown)="startDrag($event)">
       <div class="edit-text">
         Drag to move around
       </div>

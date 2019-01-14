@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { GridLayoutComponent } from 'grid-layout/grid-layout.component';
-import { BlockComponent } from 'block/block.component';
+//import { GridLayoutComponent } from 'grid-layout/grid-layout.component';
+import { BlockComponent } from './block/block.component';
 
 @Injectable({
   providedIn: 'root'

@@ -59,12 +59,13 @@ export class GridLayoutComponent implements OnInit {
    * @param x_or_e - can either be the x coordinate on the grid or an user event like a click
    */
   addBlock(x_or_e, y=0, cols=1, lines=1) {
-    if (x_or_e instanceof Event) {
+    let x = null
+    if (x_or_e instanceof MouseEvent) {
       let coord = this.getCoord(x_or_e.clientX, x_or_e.clientY)
-      let x = coord.x
+      x = coord.x
       y = coord.y
     } else {
-      let x = x_or_e
+      x = x_or_e
     }
 
     let blockFactory = this.resolver.resolveComponentFactory(BlockComponent)
@@ -81,7 +82,6 @@ export class GridLayoutComponent implements OnInit {
 
   removeBlock(block: BlockComponent) {
     let index = this.blocksContainer.indexOf(block.selfRef)
-    console.log(index)
     this.blocksContainer.remove(index)
   }
 }

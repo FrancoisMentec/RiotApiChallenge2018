@@ -10,39 +10,40 @@ import { DataService } from '../data.service';
 })
 export class BlockComponent implements OnInit {
   parent: GridLayoutComponent;
-  @Input() cols : number = 1;
-  @Input() lines : number = 1;
-  @Input() x : number = 0;
-  @Input() y : number = 0;
+  selfRef;
+  _cols : number = 1;
+  _lines : number = 1;
+  x : number = 0;
+  y : number = 0;
 
   constructor(private editGridService: EditGridService, private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.dataService.getSummoner().then(res => {
+    this.dataService.getSummoner('Saig').then(res => {
       console.log(res)
     }).catch(err => {
       console.error(err)
     })
   }
 
-  set cols(v: any) {
+  set cols(v) {
     this._cols = typeof v == 'number'
       ? v
       : parseInt(v)
   }
 
-  get cols(): number {
+  get cols() {
     return this._cols
   }
 
-  set lines(v: any) {
+  set lines(v) {
     this._lines = typeof v == 'number'
       ? v
       : parseInt(v)
   }
 
-  get lines(): number {
+  get lines() {
     return this._lines
   }
 
