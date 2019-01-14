@@ -25,6 +25,7 @@
   color: white;
   cursor: move;
   user-select: none;
+  z-index: 1;
 }
 
 .edit-text {
@@ -62,4 +63,10 @@
 
 .delete:hover {
   background-color: var(--danger-color);
+}
+
+#content {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }

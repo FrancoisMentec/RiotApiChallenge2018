@@ -23,8 +23,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AppRoutingModule,
     FormsModule
   ],
+  entryComponents: [BlockComponent],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [BlockComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
