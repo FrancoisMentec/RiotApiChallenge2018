@@ -5,6 +5,7 @@
 :root {
   --main-bg-color: rgb(100,65,215);
   --danger-color: #E53935;
+  --caption-color: #9E9E9E;
 }
 
 /* Fonts */
@@ -60,6 +61,11 @@ h1 {
 
 h1 i {
   font-family: Roboto-Thin-Italic;
+}
+
+.caption {
+  color: var(--caption-color);
+  font-size: 0.85em;
 }
 
 /* Elements */

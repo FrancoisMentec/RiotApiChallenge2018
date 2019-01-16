@@ -16,14 +16,16 @@ export class GridLayoutComponent implements OnInit {
   @Input() margin = 8;
   @Input() cols = 5;
   @Input() lines = 8;
-  width = this.cols * this.blocksWidth + (this.cols + 1) * this.margin;
-  height = this.lines * this.blocksHeight + (this.lines + 1) * this.margin;
+  //width = this.cols * this.blocksWidth + (this.cols + 1) * this.margin;
+  //height = this.lines * this.blocksHeight + (this.lines + 1) * this.margin;
   blocks = [];
 
   constructor(private resolver: ComponentFactoryResolver, private editGridService: EditGridService) {
   }
 
   ngOnInit() {
+    this.addBlock(0, 0, 1, 1, 'summoner')
+    this.addBlock(0, 1, 1, 3, 'champions')
     /*this.addBlock(0,0)
     this.addBlock(1,0,3,3)
     this.addBlock(4,0,1,3)
@@ -34,6 +36,14 @@ export class GridLayoutComponent implements OnInit {
     return this.editGridService.edit
       ? 'visible'
       : '';
+  }
+
+  get width() : number {
+    return this.cols * this.blocksWidth + (this.cols + 1) * this.margin;
+  }
+
+  get height() : number {
+    return this.lines * this.blocksHeight + (this.lines + 1) * this.margin;
   }
 
   /**
@@ -58,7 +68,7 @@ export class GridLayoutComponent implements OnInit {
    * add a new block to the grid
    * @param x_or_e - can either be the x coordinate on the grid or an user event like a click
    */
-  addBlock(x_or_e, y=0, cols=1, lines=1) {
+  addBlock(x_or_e, y=0, cols=1, lines=1, template=null) {
     let x = null
     if (x_or_e instanceof MouseEvent) {
       let coord = this.getCoord(x_or_e.clientX, x_or_e.clientY)
@@ -77,6 +87,7 @@ export class GridLayoutComponent implements OnInit {
     block.y = y
     block.cols = cols
     block.lines = lines
+    if (template) block.template = template
     this.blocksContainer.insert(blockRef.hostView)
   }
 

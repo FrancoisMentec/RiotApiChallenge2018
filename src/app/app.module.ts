@@ -9,6 +9,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { BlockComponent } from './block/block.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ChampionComponent } from './champion/champion.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     TopBarComponent,
     GridLayoutComponent,
     BlockComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ChampionComponent
   ],
   imports: [
     BrowserModule,

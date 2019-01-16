@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ComponentRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ComponentRef, TemplateRef } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 import { DataService } from '../data.service';
@@ -9,22 +9,36 @@ import { DataService } from '../data.service';
   styleUrls: ['./block.component.css']
 })
 export class BlockComponent implements OnInit {
-  parent: GridLayoutComponent;
+  // Templates
+  @ViewChild('summoner', { read: TemplateRef }) templateSummoner: TemplateRef;
+  @ViewChild('champions', { read: TemplateRef }) templateChampions: TemplateRef;
+  _template = null;
+
+  // Attributes
+  parent : GridLayoutComponent;
   selfRef;
+  edit : boolean = false;
   _cols : number = 1;
   _lines : number = 1;
   x : number = 0;
   y : number = 0;
+  blocksWidth : number = 25;
+  blocksHeight : number = 25;
 
   constructor(private editGridService: EditGridService, private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.dataService.getSummoner('Saig').then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.error(err)
-    })
+  }
+
+  set template(template: string) {
+    this._template = template
+  }
+
+  get template() {
+    if (this._template === 'summoner') return this.templateSummoner
+    if (this._template === 'champions') return this.templateChampions
+    return null
   }
 
   set cols(v) {
@@ -67,14 +81,31 @@ export class BlockComponent implements OnInit {
     return this.y * (this.parent.blocksHeight + this.parent.margin);
   }
 
+  get gridCols() : number {
+    return Math.floor(this.width / this.blocksWidth)
+  }
+
+  get gridLines() : number {
+    return Math.floor(this.height / this.blocksHeight)
+  }
+
   startDrag(e: any) {
     e.stopPropagation()
     this.editGridService.draggedBlock = this;
   }
 
+  get editDisplay() {
+    if (this.editGridService.edit && !this.edit) return "block"
+    return "none"
+  }
+
   startResize(e: any) {
     e.stopPropagation()
     this.editGridService.resizedBlock = this;
+  }
+
+  click(e) {
+    //if (this.editGridService.edit) this.edit = !this.edit
   }
 
   delete(e: any) {

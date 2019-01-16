@@ -1,14 +1,40 @@
-<div class="block" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}">
+<div class="block" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}"  (click)="click($event)">
   <div class="wrapper">
-    <div class="edit" [ngStyle]="{'display': editGridService.edit ? 'block' : 'none'}" (mousedown)="startDrag($event)">
+    <!-- edit -->
+    <div class="edit" [ngStyle]="{'display': editDisplay}" (mousedown)="startDrag($event)">
       <div class="edit-text">
         Drag to move around
       </div>
       <div class="delete" (click)="delete($event)">delete</div>
-      <div class="resize" (mousedown)="startResize($event)">grain</div>
     </div>
-    <div id="content">
-      <app-grid-layout></app-grid-layout>
+    <div class="resize" [ngStyle]="{'display': editGridService.edit ? 'block' : 'none'}" (mousedown)="startResize($event)">grain</div>
+    <!-- content -->
+    <div id="content" [ngStyle]="{'line-height.px': height - 10}">
+      <!--
+        <app-grid-layout *ngIf="!data" [blocksWidth]="blocksWidth" [blocksHeight]="blocksHeight" margin="0" [cols]="gridCols" [lines]="gridLines"></app-grid-layout>
+        <div *ngIf="data">
+          {{ data }}
+        </div>
+      -->
+      <div *ngIf="!template ; else template">
+          No template
+      </div>
     </div>
   </div>
 </div>
+
+<!-- templates -->
+<ng-template #summoner>
+  <img src='{{ dataService.summoner.icon }}' class='icon'>
+  <div class='col'>
+    <b>{{ dataService.summoner.name }}</b><br>
+    <span class="caption">{{ dataService.league.RANKED_SOLO_5x5.tier }} {{ dataService.league.RANKED_SOLO_5x5.rank }}</span><br>
+    <span class="caption">lvl {{ dataService.summoner.summonerLevel }}</span>
+  </div>
+</ng-template>
+
+<ng-template #champions>
+  <div class="champions-list">
+    <champion *ngFor="let champion of dataService.masteries" [champion]="champion"></champion>
+  </div>
+</ng-template>
