@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ComponentRef, TemplateRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ViewChild, ComponentRef, TemplateRef, ViewChildren } from '@angular/core';
 import { GridLayoutComponent } from '../grid-layout/grid-layout.component';
 import { EditGridService } from '../edit-grid.service';
 import { DataService } from '../data.service';
@@ -8,10 +8,11 @@ import { DataService } from '../data.service';
   templateUrl: './block.component.html',
   styleUrls: ['./block.component.css']
 })
-export class BlockComponent implements OnInit {
+export class BlockComponent implements OnInit, AfterViewInit {
   // Templates
   @ViewChild('summoner', { read: TemplateRef }) templateSummoner: TemplateRef;
   @ViewChild('champions', { read: TemplateRef }) templateChampions: TemplateRef;
+  templates = ['summoner', 'champions'];
   _template = null;
 
   // Attributes
@@ -29,6 +30,9 @@ export class BlockComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
   }
 
   set template(template: string) {

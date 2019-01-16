@@ -9,7 +9,8 @@
     </div>
     <div class="resize" [ngStyle]="{'display': editGridService.edit ? 'block' : 'none'}" (mousedown)="startResize($event)">grain</div>
     <!-- content -->
-    <div id="content" [ngStyle]="{'line-height.px': height - 10}">
+    <div id="content" [ngStyle]="{'line-height.px': height}">
+      <!-- Skeleton to make a grid-layout inside the block -->
       <!--
         <app-grid-layout *ngIf="!data" [blocksWidth]="blocksWidth" [blocksHeight]="blocksHeight" margin="0" [cols]="gridCols" [lines]="gridLines"></app-grid-layout>
         <div *ngIf="data">
@@ -17,7 +18,9 @@
         </div>
       -->
       <div *ngIf="!template ; else template">
-          No template
+        <div class="templates-list">
+          <button *ngFor="let temp of templates" (click)="template = temp">{{ temp }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -25,11 +28,13 @@
 
 <!-- templates -->
 <ng-template #summoner>
-  <img src='{{ dataService.summoner.icon }}' class='icon'>
-  <div class='col'>
-    <b>{{ dataService.summoner.name }}</b><br>
-    <span class="caption">{{ dataService.league.RANKED_SOLO_5x5.tier }} {{ dataService.league.RANKED_SOLO_5x5.rank }}</span><br>
-    <span class="caption">lvl {{ dataService.summoner.summonerLevel }}</span>
+  <div class="padding-left-right">
+    <img src='{{ dataService.summoner.icon }}' class='icon'>
+    <div class='col'>
+      <b>{{ dataService.summoner.name }}</b><br>
+      <span class="caption">{{ dataService.league.RANKED_SOLO_5x5.tier }} {{ dataService.league.RANKED_SOLO_5x5.rank }}</span><br>
+      <span class="caption">lvl {{ dataService.summoner.summonerLevel }}</span>
+    </div>
   </div>
 </ng-template>
 
@@ -37,4 +42,8 @@
   <div class="champions-list">
     <champion *ngFor="let champion of dataService.masteries" [champion]="champion"></champion>
   </div>
+</ng-template>
+
+<ng-template #truc>
+  truc
 </ng-template>
