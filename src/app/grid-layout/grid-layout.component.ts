@@ -2,6 +2,7 @@ import { Component, ViewChild, ComponentFactoryResolver, ViewContainerRef, OnIni
 import { EditGridService } from '../edit-grid.service';
 import { BlockComponent } from '../block/block.component'
 import { WelcomeComponent } from '../welcome/welcome.component'
+import { PopupComponent } from '../popup/popup.component'
 
 @Component({
   selector: 'app-grid-layout',
@@ -9,6 +10,7 @@ import { WelcomeComponent } from '../welcome/welcome.component'
   styleUrls: ['./grid-layout.component.css']
 })
 export class GridLayoutComponent implements OnInit {
+  @ViewChild('settings') popup: PopupComponent;
   @ViewChild('grid') grid;
   @ViewChild('grid', { read: ViewContainerRef }) blocksContainer: ViewContainerRef;
   @Input() blocksWidth = 250;
@@ -21,6 +23,7 @@ export class GridLayoutComponent implements OnInit {
   blocks = [];
 
   constructor(private resolver: ComponentFactoryResolver, private editGridService: EditGridService) {
+    this.editGridService.gridLayout = this
   }
 
   ngOnInit() {

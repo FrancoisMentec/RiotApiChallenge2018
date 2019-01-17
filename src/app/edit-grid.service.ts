@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { GridLayoutComponent } from 'grid-layout/grid-layout.component';
+import { GridLayoutComponent } from 'grid-layout/grid-layout.component';
 import { BlockComponent } from './block/block.component';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { BlockComponent } from './block/block.component';
 })
 export class EditGridService {
   edit: boolean = false;
+  gridLayout : GridLayoutComponent = null;
   draggedBlock: BlockComponent = null;
   resizedBlock: BlockComponent = null;
 

@@ -11,6 +11,8 @@ import { BlockComponent } from './block/block.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChampionComponent } from './champion/champion.component';
 import { LeagueComponent } from './league/league.component';
+import { PopupComponent } from './popup/popup.component';
+import { TextfieldComponent } from './textfield/textfield.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LeagueComponent } from './league/league.component';
     BlockComponent,
     WelcomeComponent,
     ChampionComponent,
-    LeagueComponent
+    LeagueComponent,
+    PopupComponent,
+    TextfieldComponent
   ],
   imports: [
     BrowserModule,

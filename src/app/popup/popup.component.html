@@ -1,0 +1,11 @@
+<div class="popupBackground" [ngClass]="visible ? 'visible' : ''" (click)="hide()">
+</div>
+
+<div class="popup" [ngClass]="visible ? 'visible' : ''">
+  <div class="popupTitle">
+    {{ title }}
+  </div>
+  <div class="popupContent">
+    <ng-content></ng-content>
+  </div>
+</div>

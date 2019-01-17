@@ -1,10 +1,11 @@
 <div id="top-padding" [ngClass]="miniClass"></div>
 <div id="top-bar" [ngClass]="miniClass">
-  <div class="option-bar">
+  <div *ngIf="summoner" class="option-bar">
     <!--
     <button class="icon" (click)="toggleMinimized()">menu</button>
     -->
     <input type="checkbox" class="edit-toggle" (click)="editToggleClicked($event)">
+    <button class="icon" (click)="showSettings()">settings</button>
   </div>
 
   <h1 id="title">

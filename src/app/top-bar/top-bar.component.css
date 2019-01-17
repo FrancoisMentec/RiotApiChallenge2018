@@ -44,6 +44,12 @@
 
 .option-bar > * {
   margin-right: 12px;
+  vertical-align: middle;
+}
+
+.option-bar > button {
+  height: 40px;
+  line-height: 40px;
 }
 
 .edit-toggle {
@@ -58,6 +64,7 @@
   position: relative;
   outline: none;
   cursor: pointer;
+  top: 0;
 }
 
 .edit-toggle::before {

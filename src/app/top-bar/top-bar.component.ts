@@ -52,4 +52,8 @@ export class TopBarComponent implements OnInit {
       this.search()
     }
   }
+
+  showSettings() {
+    if (this.editGridService.gridLayout) this.editGridService.gridLayout.popup.show();
+  }
 }

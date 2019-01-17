@@ -2,6 +2,6 @@
   <img class="icon" [src]="league.image">
   <div class="name">{{ league.tier }} {{ league.rank }}</div>
   <div class="stats">
-    {{ league.wins + league.losses }} Games<br>
-    {{ winrate }}% Winrate
+    <span *ngIf="displayGames">{{ league.wins + league.losses }} Games</span><br>
+    <span *ngIf="displayWinrate">{{ winrate }}% Winrate</span>
 </div>

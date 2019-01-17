@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LeagueComponent implements OnInit {
 
   @Input() league;
+  @Input() displayGames : boolean = true;
+  @Input() displayWinrate : boolean = true;
 
   constructor() { }
 

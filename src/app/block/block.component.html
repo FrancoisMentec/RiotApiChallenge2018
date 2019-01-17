@@ -65,14 +65,18 @@ How to create a new template:
 <ng-template #leagues>
   <div class="leagues-wrapper">
     <div class="wrapper">
-      <league *ngIf="settings.flex" [league]="dataService.league.RANKED_FLEX_SR"></league>
-      <league *ngIf="settings.soloQ" [league]="dataService.league.RANKED_SOLO_5x5"></league>
-      <league *ngIf="settings.tt" [league]="dataService.league.RANKED_FLEX_TT"></league>
+      <league *ngIf="settings.soloQ" [league]="dataService.league.RANKED_SOLO_5x5" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.flex" [league]="dataService.league.RANKED_FLEX_SR" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.tt" [league]="dataService.league.RANKED_FLEX_TT" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
     </div>
   </div>
   <div class="settings">
+    <h5>Leagues to display :</h5>
     <input type="checkbox" [(ngModel)]="settings.soloQ"><label>SoloQ</label><br>
     <input type="checkbox" [(ngModel)]="settings.flex"><label>Flex 5v5</label><br>
     <input type="checkbox" [(ngModel)]="settings.tt"><label>Flex 3v3</label><br>
+    <h5>Data to display :</h5>
+    <input type="checkbox" [(ngModel)]="settings.displayLeagueGames"><label>Number of games</label><br>
+    <input type="checkbox" [(ngModel)]="settings.displayLeagueWinrate"><label>Winrate</label>
   </div>
 </ng-template>

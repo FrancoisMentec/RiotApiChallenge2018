@@ -18,7 +18,9 @@ export class BlockComponent implements OnInit, AfterViewInit {
 
   settings = {
     soloQ: true,
-    flex: true
+    flex: true,
+    displayLeagueGames: true,
+    displayLeagueWinrate: true
   }
 
   // Attributes
