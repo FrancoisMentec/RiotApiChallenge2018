@@ -49,8 +49,9 @@
 .edit-toggle {
   width: 56px;
   height: 32px;
-  background-color: white;
+  background-color: white !important;
   border-radius: 16px;
+  border: none;
   -webkit-appearance: unset;
   vertical-align: middle;
   margin: 0;

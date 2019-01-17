@@ -12,13 +12,19 @@ export class BlockComponent implements OnInit, AfterViewInit {
   // Templates
   @ViewChild('summoner', { read: TemplateRef }) templateSummoner;
   @ViewChild('champions', { read: TemplateRef }) templateChampions;
-  templates = ['summoner', 'champions'];
+  @ViewChild('leagues', { read: TemplateRef }) templateLeagues;
+  templates = {};
   _template = null;
+
+  settings = {
+    soloQ: true,
+    flex: true
+  }
 
   // Attributes
   parent : GridLayoutComponent;
   selfRef;
-  edit : boolean = false;
+  showSettings : boolean = false;
   _cols : number = 1;
   _lines : number = 1;
   x : number = 0;
@@ -33,6 +39,9 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.templates.summoner = this.templateSummoner
+    this.templates.champions = this.templateChampions
+    this.templates.leagues = this.templateLeagues
   }
 
   set template(template: string) {
@@ -40,9 +49,12 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   get template() {
-    if (this._template === 'summoner') return this.templateSummoner
-    if (this._template === 'champions') return this.templateChampions
+    if (this._template in this.templates)  return this.templates[this._template]
     return null
+  }
+
+  get templatesNames(): Array<string> {
+    return Object.keys(this.templates)
   }
 
   set cols(v) {
@@ -99,7 +111,7 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   get editDisplay() {
-    if (this.editGridService.edit && !this.edit) return "block"
+    if (this.editGridService.edit) return "block"
     return "none"
   }
 
@@ -108,8 +120,9 @@ export class BlockComponent implements OnInit, AfterViewInit {
     this.editGridService.resizedBlock = this;
   }
 
-  click(e) {
+  toggleSettings(e) {
     //if (this.editGridService.edit) this.edit = !this.edit
+    this.showSettings = !this.showSettings
   }
 
   delete(e: any) {

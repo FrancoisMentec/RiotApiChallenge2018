@@ -1,0 +1,26 @@
+.wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  line-height: 1em;
+}
+
+.icon {
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  color: white;
+  font-family: Roboto-Bold;
+}
+
+.stats {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--caption-color);
+}

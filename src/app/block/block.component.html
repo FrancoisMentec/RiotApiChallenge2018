@@ -1,13 +1,15 @@
-<div class="block" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}"  (click)="click($event)">
+<div class="block" [ngClass]="editGridService.edit ? 'show-settings' : ''" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}">
   <div class="wrapper">
     <!-- edit -->
-    <div class="edit" [ngStyle]="{'display': editDisplay}" (mousedown)="startDrag($event)">
+    <div class="edit">
+      <div class="top-bar" (mousedown)="startDrag($event)">
+        <div class="delete" (click)="delete($event)">delete</div>
+      </div>
       <div class="edit-text">
         Drag to move around
       </div>
-      <div class="delete" (click)="delete($event)">delete</div>
     </div>
-    <div class="resize" [ngStyle]="{'display': editGridService.edit ? 'block' : 'none'}" (mousedown)="startResize($event)">grain</div>
+    <div class="resize" (mousedown)="startResize($event)">grain</div>
     <!-- content -->
     <div id="content" [ngStyle]="{'line-height.px': height}">
       <!-- Skeleton to make a grid-layout inside the block -->
@@ -19,14 +21,25 @@
       -->
       <div *ngIf="!template ; else template">
         <div class="templates-list">
-          <button *ngFor="let temp of templates" (click)="template = temp">{{ temp }}</button>
+          <button *ngFor="let temp of templatesNames" (click)="template = temp">{{ temp }}</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- templates -->
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- TEMPLATES -->
+<!--
+How to create a new template:
+ - Create a <ng-template> tag with the name of your template after a # : <ng-template #myTemplate></ng-template>
+ - Put the content of your template inside the tag
+ - Go to block.component.ts
+ - Create the attribute for your template : @ViewChild('myTemplate', { read: TemplateRef }) templateMyTemplate;
+ - Add your template to the templates collection inside ngAfterViewInit : this.templates.myTemplate = this.templateMyTemplate
+ - GG
+-->
+
 <ng-template #summoner>
   <div class="padding-left-right">
     <img src='{{ dataService.summoner.icon }}' class='icon'>
@@ -49,6 +62,17 @@
   </div>
 </ng-template>
 
-<ng-template #truc>
-  truc
+<ng-template #leagues>
+  <div class="leagues-wrapper">
+    <div class="wrapper">
+      <league *ngIf="settings.flex" [league]="dataService.league.RANKED_FLEX_SR"></league>
+      <league *ngIf="settings.soloQ" [league]="dataService.league.RANKED_SOLO_5x5"></league>
+      <league *ngIf="settings.tt" [league]="dataService.league.RANKED_FLEX_TT"></league>
+    </div>
+  </div>
+  <div class="settings">
+    <input type="checkbox" [(ngModel)]="settings.soloQ"><label>SoloQ</label><br>
+    <input type="checkbox" [(ngModel)]="settings.flex"><label>Flex 5v5</label><br>
+    <input type="checkbox" [(ngModel)]="settings.tt"><label>Flex 3v3</label><br>
+  </div>
 </ng-template>

@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
   width: 64px;
-  height: 92px;
+  height: 82px;
   margin: 5px;
 }
 
@@ -12,11 +12,14 @@
   /*border-radius: 50%;*/
 }
 
-.mastery {
+.masteryWrapper {
   position: absolute;
   left: 50%;
-  top: 64px;
+  top: 54px;
   transform: translateX(-50%);
+}
+
+.mastery {
   width: 32px;
   height: auto;
 }

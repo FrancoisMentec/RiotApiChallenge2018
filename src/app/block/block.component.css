@@ -9,12 +9,11 @@
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.6);
   pointer-events: auto;
+  overflow: auto;
 }
 
-.wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
+.block.show-settings {
+  overflow: hidden;
 }
 
 .edit {
@@ -24,9 +23,14 @@
   position: absolute;
   background-color: rgba(0,0,0,0.64);
   color: white;
-  cursor: move;
   user-select: none;
   z-index: 1;
+  border-radius: 2px;
+  display: none;
+}
+
+.show-settings .edit {
+  display: block;
 }
 
 .edit-text {
@@ -36,11 +40,16 @@
   transform: translate(-50%, -50%);
 }
 
+.show-settings .edit-text {
+  display: none;
+}
+
 .resize {
+  display: none;
   font-family: Material-Icons;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 2px;
+  bottom: 1px;
   width: 19px;
   height: 19px;
   font-size: 21px;
@@ -48,21 +57,33 @@
   cursor: nw-resize;
   user-select: none;
   color: white;
-  z-index: 1;
+  z-index: 2;
+}
+
+.show-settings .resize {
+  display: block;
+}
+
+.top-bar {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background-color: var(--main-bg-color);
+  text-align: right;
+  cursor: move;
 }
 
 .delete {
+  display: inline-block;
   transition: 0.4s;
   font-family: Material-Icons;
   text-align: center;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  font-size: 21px;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 26px;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .delete:hover {
@@ -72,7 +93,7 @@
 #content {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  position: relative;
   text-align: left;
 }
 
@@ -88,6 +109,24 @@
   width: 100%;
   margin-bottom: 5px;
   text-transform: uppercase;
+}
+
+.settings {
+  display: none;
+  line-height: 1.5em;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 5px;
+  z-index: 1;
+  overflow: auto;
+}
+
+.show-settings .settings {
+  display: block;
 }
 
 /* Templates */
@@ -149,4 +188,13 @@
   height: calc(100% - 32px);
   overflow: auto;
   text-align: center;
+}
+
+.leagues-wrapper {
+  text-align: center;
+  line-height: 1em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
 }

@@ -28,15 +28,20 @@ export class DataService {
   _masteries = null;
 
   constructor() {
+    this.loadData()
+  }
+
+  loadData() {
     this.getData(SUMMONER_URL).then(summoner => {
       this._summoner = summoner
+      console.log(this.summoner)
     }).catch(err => {
       console.error(err)
     })
 
     this.getData(LEAGUE_URL).then(league => {
       this._league = league
-      //console.log(this.league)
+      console.log(this.league)
     }).catch(err => {
       console.error(err)
     })

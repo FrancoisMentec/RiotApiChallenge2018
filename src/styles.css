@@ -6,6 +6,7 @@
   --main-bg-color: rgb(100,65,215);
   --secondary-bg-color: #323232;
   --danger-color: #E53935;
+  --ok-color: #009688;
   --caption-color: #9E9E9E;
 }
 
@@ -69,6 +70,13 @@ h1 i {
   font-size: 0.85em;
 }
 
+/* Container */
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 /* Elements */
 html, body {
   width: 100%;
@@ -113,3 +121,55 @@ button.icon {
   font-family: Material-Icons;
   font-size: 24px;
 }
+
+input {
+  outline: none;
+}
+
+input[type=checkbox] {
+  transition: 0.2s;
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #616161; /* gray 700 */
+  border-radius: 2px;
+  vertical-align: middle;
+  margin: 0;
+  margin-right: 8px;
+  cursor: pointer;
+  -webkit-appearance: unset;
+  vertical-align: text-bottom;
+  top: -2px;
+}
+
+input[type=checkbox]:after {
+  content: "";
+  transition: opacity 0.2s;
+  position: absolute;
+  opacity: 0;
+}
+
+input[type=checkbox]:checked {
+  border-color: var(--ok-color);
+  background-color: var(--ok-color);
+}
+
+input[type=checkbox]:checked:after {
+  top: 3px;
+  left: 2px;
+  width: 8px;
+  height: 3px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg);
+  opacity: 1;
+}
+
+/*input[type=checkbox] + label {
+  color: var(--danger-color);
+}
+
+input[type=checkbox]:checked + label {
+  color: #009688;
+}*/

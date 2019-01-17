@@ -10,6 +10,7 @@ import { GridLayoutComponent } from './grid-layout/grid-layout.component';
 import { BlockComponent } from './block/block.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChampionComponent } from './champion/champion.component';
+import { LeagueComponent } from './league/league.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ChampionComponent } from './champion/champion.component';
     GridLayoutComponent,
     BlockComponent,
     WelcomeComponent,
-    ChampionComponent
+    ChampionComponent,
+    LeagueComponent
   ],
   imports: [
     BrowserModule,

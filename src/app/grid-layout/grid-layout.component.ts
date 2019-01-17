@@ -25,10 +25,10 @@ export class GridLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.addBlock(0, 0, 1, 1, 'summoner')
-    this.addBlock(0, 1, 1, 3, 'champions')
-    this.addBlock(1, 0, 1, 2)
-    /*this.addBlock(0,0)
-    this.addBlock(1,0,3,3)
+    this.addBlock(4, 0, 1, 8, 'champions')
+    this.addBlock(0, 1, 1, 2, 'leagues')
+    this.addBlock(1,0,1,2)
+    /*this.addBlock(1,0,3,3)
     this.addBlock(4,0,1,3)
     this.addBlock(0,1,1,2)*/
   }
