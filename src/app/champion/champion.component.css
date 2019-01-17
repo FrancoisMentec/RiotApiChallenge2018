@@ -1,12 +1,22 @@
 #wrapper {
+  position: relative;
   display: inline-block;
   width: 64px;
-  height: 64px;
+  height: 92px;
   margin: 5px;
 }
 
-img {
+.icon {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  height: auto;
+  /*border-radius: 50%;*/
+}
+
+.mastery {
+  position: absolute;
+  left: 50%;
+  top: 64px;
+  transform: translateX(-50%);
+  width: 32px;
+  height: auto;
 }

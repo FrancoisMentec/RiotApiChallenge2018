@@ -39,8 +39,13 @@
 </ng-template>
 
 <ng-template #champions>
+  <div class="champion-search">
+    <input class="champion-search-input" placeholder="ex: yasuo, teemo, 1, 7, ..." [(ngModel)]="masteryFilter">
+  </div>
   <div class="champions-list">
-    <champion *ngFor="let champion of dataService.masteries" [champion]="champion"></champion>
+    <ng-container *ngFor="let champion of dataService.masteries">
+      <champion *ngIf="!masteryFilter || champion.championName.toLowerCase().includes(masteryFilter.toLowerCase()) || '1234567'.split('').includes(masteryFilter) && champion.championLevel == masteryFilter" [champion]="champion"></champion>
+    </ng-container>
   </div>
 </ng-template>
 

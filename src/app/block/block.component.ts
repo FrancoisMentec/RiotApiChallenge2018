@@ -10,8 +10,8 @@ import { DataService } from '../data.service';
 })
 export class BlockComponent implements OnInit, AfterViewInit {
   // Templates
-  @ViewChild('summoner', { read: TemplateRef }) templateSummoner: TemplateRef;
-  @ViewChild('champions', { read: TemplateRef }) templateChampions: TemplateRef;
+  @ViewChild('summoner', { read: TemplateRef }) templateSummoner;
+  @ViewChild('champions', { read: TemplateRef }) templateChampions;
   templates = ['summoner', 'champions'];
   _template = null;
 

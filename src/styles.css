@@ -4,6 +4,7 @@
 
 :root {
   --main-bg-color: rgb(100,65,215);
+  --secondary-bg-color: #323232;
   --danger-color: #E53935;
   --caption-color: #9E9E9E;
 }

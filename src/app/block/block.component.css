@@ -1,12 +1,13 @@
 .block {
   transition: 0.2s;
   display: inline-block;
-  background-color: rgb(242, 242, 242);
-  color: black;
+  /*background-color: rgb(242, 242, 242);*/
+  background-color: var(--secondary-bg-color);
+  color: white;
   line-height: 1.2em;
   position: absolute;
   border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.224);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.6);
   pointer-events: auto;
 }
 
@@ -86,6 +87,7 @@
 .templates-list button {
   width: 100%;
   margin-bottom: 5px;
+  text-transform: uppercase;
 }
 
 /* Templates */
@@ -119,9 +121,32 @@
   vertical-align: middle;
 }
 
+.champion-search {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  background-color: var(--main-bg-color);
+}
+
+.champion-search-input {
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 5px;
+  margin: 0;
+  outline: none;
+  border-radius: 2px 2px 0 0;
+}
+
 .champions-list {
   transition: 0.2s;
   line-height: 1em;
   width: 100%;
+  height: calc(100% - 32px);
+  overflow: auto;
   text-align: center;
 }
