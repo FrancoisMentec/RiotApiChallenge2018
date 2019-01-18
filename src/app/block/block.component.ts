@@ -123,7 +123,7 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   get left(): number {
-    return this.x * (this.parent.blocksWidth + this.parent.margin) + this.margin;
+    return this.x * (this.parent.blocksWidth + this.parent.margin);
   }
 
   get top(): number {

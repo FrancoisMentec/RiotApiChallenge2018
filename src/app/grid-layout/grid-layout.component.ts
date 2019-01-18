@@ -46,6 +46,7 @@ export class GridLayoutComponent implements OnInit {
     let configs = JSON.parse(this.dataService.getCookie('GridLayoutConfigs')) || {}
     configs[name] = this.config
     this.dataService.setCookie('GridLayoutConfigs', configs)
+    this.dataService.setCookie('DefaultConfig', name)
     if (notify) alert(`Config saved as "${name}"`)
   }
 
@@ -139,6 +140,23 @@ export class GridLayoutComponent implements OnInit {
   }
 
   /**
+   * Load b settings into a
+   * Made to support backward compatibility with previous configs
+   */
+  loadSettings(a, b) {
+    if (typeof a == 'object') {
+      for (let prop in a) {
+        if (prop in b) {
+          a[prop] = this.loadSettings(a[prop], b[prop])
+        }
+      }
+      return a
+    } else {
+      return b
+    }
+  }
+
+  /**
    * add a new block to the grid
    * @param x_or_e - can either be the x coordinate on the grid or an user event like a click
    */
@@ -162,7 +180,9 @@ export class GridLayoutComponent implements OnInit {
     block.cols = cols
     block.lines = lines
     if (template) block.template = template
-    if (settings) block.settings = settings
+    if (settings) {
+      this.loadSettings(block.settings, settings)
+    }
     this.blocks.push(block)
     this.blocksContainer.insert(blockRef.hostView)
   }

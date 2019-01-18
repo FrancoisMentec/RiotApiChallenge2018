@@ -124,6 +124,10 @@
   transform: none;*/
 }
 
+#title span {
+  cursor: pointer;
+}
+
 /* Search */
 .search-wrapper {
   transition: 0.4s;

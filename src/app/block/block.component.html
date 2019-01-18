@@ -60,12 +60,15 @@ How to create a new template:
 
 <ng-template #champions>
   <div class="champion-search">
-    <input class="champion-search-input" placeholder="ex: yasuo, teemo, 1, 7, ..." [(ngModel)]="settings.champions.filter">
+    <input class="champion-search-input" placeholder="ex: yasuo, teemo, 6, chest, ..." [(ngModel)]="settings.champions.filter">
   </div>
   <div class="champions-list">
     <ng-container *ngFor="let champion of dataService.masteries">
-      <champion *ngIf="champion.championName.toLowerCase().includes(settings.champions.filter.toLowerCase()) || champion.championLevel == settings.champions.filter" [champion]="champion"></champion>
+      <champion *ngIf="champion.championName.toLowerCase().includes(settings.champions.filter.toLowerCase()) || champion.championLevel == settings.champions.filter || settings.champions.filter.toLowerCase() == 'chest' && !champion.chestGranted" [champion]="champion"></champion>
     </ng-container>
+  </div>
+  <div class="settings">
+    "chest" filter champions you have <b class="danger">not</b> obtained a chest for this season.
   </div>
 </ng-template>
 

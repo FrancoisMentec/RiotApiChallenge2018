@@ -1,6 +1,8 @@
 <div id="wrapper">
-  <img class="icon" [src]="champion.championIcon">
-  <div class="masteryWrapper">
-    <img class="mastery" [src]="champion.image">
-  </div>
+  <a href="https://lol.gamepedia.com/{{ champion.championName }}" target="_blank">
+    <img class="icon" [src]="champion.championIcon">
+    <div class="masteryWrapper">
+      <img class="mastery" [src]="champion.image">
+    </div>
+  </a>
 </div>

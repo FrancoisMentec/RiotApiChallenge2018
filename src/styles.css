@@ -79,6 +79,10 @@ h5 {
   font-size: 0.85em;
 }
 
+.danger {
+  color: var(--danger-color);
+}
+
 /* Container */
 .wrapper {
   width: 100%;

@@ -15,7 +15,9 @@
   <md-select label="Config" [(value)]="configName" [values]="configsNames"></md-select>
   <h5>Save config</h5>
   <textfield label="Config name" [(value)]="configNameToSave"></textfield>
-  <button (click)="saveConfig(configNameToSave)">save</button>
+  <div style="text-align: right">
+    <button (click)="saveConfig(configNameToSave)">save</button>
+  </div>
   <h5>Settings</h5>
   <textfield label="Columns" type="number" [(value)]="cols" min='1'></textfield>
   <textfield label="Lines" type="number" [(value)]="lines" min='1'></textfield>

@@ -21,7 +21,7 @@ export class DataService {
   _no_summoner = {"icon": "http://ddragon.canisback.com/latest/img/profileicon/0.png", "name": "none", "summonerLevel": 0}
   _summoner = null;
 
-  _no_leagues = {"RANKED_FLEX_TT":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_SOLO_5x5":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_FLEX_SR":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0}}
+  _no_leagues = {"RANKED_FLEX_TT":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0,"image":"http://canisback.com/img/lol/unranked.png"},"RANKED_SOLO_5x5":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0,"image":"http://canisback.com/img/lol/unranked.png"},"RANKED_FLEX_SR":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0,"image":"http://canisback.com/img/lol/unranked.png"}}
   _leagues = null;
 
   _no_masteries = [];
