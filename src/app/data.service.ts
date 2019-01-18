@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 const SUMMONER_URL = 'http://canisback.com:8080/data/summoner'
 const LEAGUE_URL = 'http://canisback.com:8080/data/league'
 const MASTERIES_URL = 'http://canisback.com:8080/data/masteries'
+const MATCHS_URL = 'http://canisback.com:8080/data/matchlist'
 
 function unpack(obj) {
+  if (obj == null) return obj
   if (typeof obj !== 'object') return obj
-  if (typeof obj.content !== 'undefined') obj = obj.content
+  if ('content' in obj) obj = obj.content
   for (let prop in obj) {
     obj[prop] = unpack(obj[prop])
   }
@@ -26,6 +28,9 @@ export class DataService {
 
   _no_masteries = [];
   _masteries = null;
+
+  _no_matchs = [];
+  _matchs = null;
 
   constructor() {
     this.loadData()
@@ -54,6 +59,13 @@ export class DataService {
     }).catch(err => {
       console.error(err)
     })
+
+    this.getData(MATCHS_URL).then(matchs => {
+      this._matchs = matchs.matchlist
+      console.log(this.matchs)
+    }).catch(err => {
+      console.error(err)
+    })
   }
 
   get summoner() {
@@ -71,7 +83,12 @@ export class DataService {
     else return this._no_masteries
   }
 
-  getData(url)  {
+  get matchs() {
+    if (this._matchs) return this._matchs
+    else return this._no_matchs
+  }
+
+  getData(url): any  {
     return new Promise((resolve, reject) => {
       fetch(url).then(response => {
         if (response.ok) {

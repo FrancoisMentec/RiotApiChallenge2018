@@ -14,6 +14,7 @@ import { LeagueComponent } from './league/league.component';
 import { PopupComponent } from './popup/popup.component';
 import { TextfieldComponent } from './textfield/textfield.component';
 import { MdSelectComponent } from './md-select/md-select.component';
+import { MatchComponent } from './match/match.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MdSelectComponent } from './md-select/md-select.component';
     LeagueComponent,
     PopupComponent,
     TextfieldComponent,
-    MdSelectComponent
+    MdSelectComponent,
+    MatchComponent
   ],
   imports: [
     BrowserModule,

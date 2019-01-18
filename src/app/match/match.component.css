@@ -1,0 +1,65 @@
+.match {
+  min-width: calc(100% - 10px);
+  line-height: 1em;
+  margin: 5px;
+}
+
+.match > * {
+  vertical-align: top;
+}
+
+.matchData {
+  display: inline-block;
+  font-size: 0.8em;
+  min-width: 100px;
+  width: calc(100% - 185px - 185px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team {
+  display: inline-block;
+  width: 180px;
+  margin-left: 5px;
+  border-radius: 4px
+}
+
+.team.win {
+  background-color: var(--ok-color);
+}
+
+.team.lost {
+  background-color: var(--danger-color);
+}
+
+.player {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+}
+
+.player > * {
+  vertical-align: top;
+}
+
+.championImage {
+  width: 24px;
+  height: auto;
+  margin-right: 3px;
+}
+
+.playerName {
+  /*color: var(--caption-color);*/
+  display: inline-block;
+  max-width: 129px;
+  height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+}
+
+.rankImage {
+  width: 24px;
+  height: auto;
+}

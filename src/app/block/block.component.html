@@ -92,3 +92,11 @@ How to create a new template:
     <input type="checkbox" [(ngModel)]="settings.leagues.winrate"><label>Winrate</label>
   </div>
 </ng-template>
+
+<ng-template #matchs>
+  <div class="matchList">
+    <ng-container *ngFor="let match of dataService.matchs">
+      <match [match]="match"></match>
+    </ng-container>
+  </div>
+</ng-template>

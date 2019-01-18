@@ -1,0 +1,17 @@
+<div class="match">
+  <div class="matchData">
+    {{ match.mapId.mapName }}<br>
+    {{ match.queueId.queueName }}
+  </div>
+  <ng-container *ngFor="let team of teams">
+    <div class="team" [ngClass]="team.win == 1 ? 'win' : 'lost'">
+      <ng-container *ngFor="let player of team.players">
+        <div class="player">
+          <img class="championImage" [src]="player.championId.championImage">
+          <span class="playerName">{{ player.name }}</span>
+          <img class="rankImage" [src]="player.rankImage">
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

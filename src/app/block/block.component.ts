@@ -13,6 +13,7 @@ export class BlockComponent implements OnInit, AfterViewInit {
   @ViewChild('summoner', { read: TemplateRef }) templateSummoner;
   @ViewChild('champions', { read: TemplateRef }) templateChampions;
   @ViewChild('leagues', { read: TemplateRef }) templateLeagues;
+  @ViewChild('matchs', { read: TemplateRef }) templateMatchs;
   templates: Object = null; // Init this variable in ngAfterViewInit()
   private _template = null; // Store the name of the current template
 
@@ -60,7 +61,8 @@ export class BlockComponent implements OnInit, AfterViewInit {
     this.templates = {
       summoner: this.templateSummoner,
       champions: this.templateChampions,
-      leagues: this.templateLeagues
+      leagues: this.templateLeagues,
+      matchs: this.templateMatchs
     }
   }
 
