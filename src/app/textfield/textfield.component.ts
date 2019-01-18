@@ -11,7 +11,7 @@ export class TextfieldComponent implements OnInit {
   @Input() value: any = '';
   @Input() min: number = null;
   @Input() type: string = 'string';
-  @Output() valueChange: EventEmitter = new EventEmitter<>();
+  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
   notEmpty = '';
 
   constructor() { }
@@ -21,19 +21,6 @@ export class TextfieldComponent implements OnInit {
       ? 'not-empty'
       : ''
   }
-
-  /*get value() {
-    return this._value
-  }
-
-  set value(value) {
-    this._value = value
-    this.valueChange.emit(this.value)
-  }
-
-  setValue(value) {
-    this._value = value;
-  }*/
 
   emit() {
     this.notEmpty = typeof this.value != 'string' || this.value.length > 0

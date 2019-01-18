@@ -86,6 +86,10 @@ h5 {
   position: relative;
 }
 
+.line {
+  display: block;
+}
+
 /* Elements */
 html, body {
   width: 100%;

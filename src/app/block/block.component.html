@@ -42,22 +42,29 @@ How to create a new template:
 
 <ng-template #summoner>
   <div class="padding-left-right">
-    <img src='{{ dataService.summoner.icon }}' class='icon'>
+    <img *ngIf="settings.summoner.icon" src='{{ dataService.summoner.icon }}' class='icon'>
     <div class='col'>
-      <b>{{ dataService.summoner.name }}</b><br>
-      <span class="caption">{{ dataService.league.RANKED_SOLO_5x5.tier }} {{ dataService.league.RANKED_SOLO_5x5.rank }}</span><br>
-      <span class="caption">lvl {{ dataService.summoner.summonerLevel }}</span>
+      <b *ngIf="settings.summoner.name" class="line">{{ dataService.summoner.name }}</b>
+      <span *ngIf="settings.summoner.rank" class="line caption">{{ dataService.leagues.RANKED_SOLO_5x5.tier }} {{ dataService.leagues.RANKED_SOLO_5x5.rank }}</span>
+      <span *ngIf="settings.summoner.lvl" class="line caption">lvl {{ dataService.summoner.summonerLevel }}</span>
     </div>
+  </div>
+  <div class="settings">
+    <h5>Data to display :</h5>
+    <input type="checkbox" [(ngModel)]="settings.summoner.name"><label>Name</label><br>
+    <input type="checkbox" [(ngModel)]="settings.summoner.icon"><label>Icon</label><br>
+    <input type="checkbox" [(ngModel)]="settings.summoner.rank"><label>SoloQ rank</label><br>
+    <input type="checkbox" [(ngModel)]="settings.summoner.lvl"><label>Level</label><br>
   </div>
 </ng-template>
 
 <ng-template #champions>
   <div class="champion-search">
-    <input class="champion-search-input" placeholder="ex: yasuo, teemo, 1, 7, ..." [(ngModel)]="masteryFilter">
+    <input class="champion-search-input" placeholder="ex: yasuo, teemo, 1, 7, ..." [(ngModel)]="settings.champions.filter">
   </div>
   <div class="champions-list">
     <ng-container *ngFor="let champion of dataService.masteries">
-      <champion *ngIf="!masteryFilter || champion.championName.toLowerCase().includes(masteryFilter.toLowerCase()) || '1234567'.split('').includes(masteryFilter) && champion.championLevel == masteryFilter" [champion]="champion"></champion>
+      <champion *ngIf="champion.championName.toLowerCase().includes(settings.champions.filter.toLowerCase()) || champion.championLevel == settings.champions.filter" [champion]="champion"></champion>
     </ng-container>
   </div>
 </ng-template>
@@ -65,20 +72,20 @@ How to create a new template:
 <ng-template #leagues>
   <div class="leagues-wrapper">
     <div class="wrapper">
-      <league *ngIf="settings.soloQ" name="SoloQ" [league]="dataService.league.RANKED_SOLO_5x5" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
-      <league *ngIf="settings.flex" name="Flex" [league]="dataService.league.RANKED_FLEX_SR" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
-      <league *ngIf="settings.tt" name="3v3" [league]="dataService.league.RANKED_FLEX_TT" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.leagues.soloQ" name="SoloQ" [league]="dataService.leagues.RANKED_SOLO_5x5" [displayIcon]="settings.leagues.icon" [displayRank]="settings.leagues.rank" [displayGames]="settings.leagues.games" [displayWinrate]="settings.leagues.winrate"></league>
+      <league *ngIf="settings.leagues.flex" name="Flex" [league]="dataService.leagues.RANKED_FLEX_SR" [displayIcon]="settings.leagues.icon" [displayRank]="settings.leagues.rank" [displayGames]="settings.leagues.games" [displayWinrate]="settings.leagues.winrate"></league>
+      <league *ngIf="settings.leagues.tt" name="3v3" [league]="dataService.leagues.RANKED_FLEX_TT" [displayIcon]="settings.leagues.icon" [displayRank]="settings.leagues.rank" [displayGames]="settings.leagues.games" [displayWinrate]="settings.leagues.winrate"></league>
     </div>
   </div>
   <div class="settings">
     <h5>Leagues to display :</h5>
-    <input type="checkbox" [(ngModel)]="settings.soloQ"><label>SoloQ</label><br>
-    <input type="checkbox" [(ngModel)]="settings.flex"><label>Flex 5v5</label><br>
-    <input type="checkbox" [(ngModel)]="settings.tt"><label>Flex 3v3</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.soloQ"><label>SoloQ</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.flex"><label>Flex 5v5</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.tt"><label>Flex 3v3</label><br>
     <h5>Data to display :</h5>
-    <input type="checkbox" [(ngModel)]="settings.displayLeagueRank"><label>Rank</label><br>
-    <input type="checkbox" [(ngModel)]="settings.displayLeagueIcon"><label>Icon</label><br>
-    <input type="checkbox" [(ngModel)]="settings.displayLeagueGames"><label>Number of games</label><br>
-    <input type="checkbox" [(ngModel)]="settings.displayLeagueWinrate"><label>Winrate</label>
+    <input type="checkbox" [(ngModel)]="settings.leagues.rank"><label>Rank</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.icon"><label>Icon</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.games"><label>Number of games</label><br>
+    <input type="checkbox" [(ngModel)]="settings.leagues.winrate"><label>Winrate</label>
   </div>
 </ng-template>

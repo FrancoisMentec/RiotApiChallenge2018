@@ -17,7 +17,15 @@
 
   <div class="search-wrapper">
     <input class="search-input" type="text" placeholder="Search" [(ngModel)]="summoner" (keydown)="searchKeydown($event)">
-    <button id="region">{{ region }}</button>
+    <!--<md-select label="Server" [(value)]="region" [values]="regions"></md-select>-->
+    <button id="region" (click)="regionPopup.show()">{{ region }}</button>
     <button class="icon search-button" (click)="search()">search</button>
   </div>
 </div>
+
+<popup title="Region" #regionPopup>
+  <md-select label="Region" [(value)]="region" [values]="regions"></md-select>
+  <div style="text-align: right">
+    <button (click)="regionPopup.hide()">confirm</button>
+  </div>
+</popup>

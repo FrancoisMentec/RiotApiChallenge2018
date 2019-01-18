@@ -13,16 +13,32 @@ export class BlockComponent implements OnInit, AfterViewInit {
   @ViewChild('summoner', { read: TemplateRef }) templateSummoner;
   @ViewChild('champions', { read: TemplateRef }) templateChampions;
   @ViewChild('leagues', { read: TemplateRef }) templateLeagues;
-  templates = {};
-  _template = null;
+  templates: Object = null; // Init this variable in ngAfterViewInit()
+  private _template = null; // Store the name of the current template
 
+  /**
+   * settings is made to store block layouts settings
+   * settings.[layout name].[setting name]
+   */
   settings = {
-    soloQ: true,
-    flex: true,
-    displayLeagueIcon: true,
-    displayLeagueRank: true,
-    displayLeagueGames: true,
-    displayLeagueWinrate: true
+    summoner: {
+      name: true,
+      icon: true,
+      rank: true,
+      lvl: true
+    },
+    champions: {
+      filter: ''
+    },
+    leagues: {
+      soloQ: true,
+      flex: true,
+      tt: false,
+      icon: true,
+      rank: true,
+      games: true,
+      winrate: true
+    }
   }
 
   // Attributes
@@ -41,9 +57,11 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.templates.summoner = this.templateSummoner
-    this.templates.champions = this.templateChampions
-    this.templates.leagues = this.templateLeagues
+    this.templates = {
+      summoner: this.templateSummoner,
+      champions: this.templateChampions,
+      leagues: this.templateLeagues
+    }
   }
 
   get config() {
@@ -62,12 +80,14 @@ export class BlockComponent implements OnInit, AfterViewInit {
   }
 
   get template() {
-    if (this._template in this.templates)  return this.templates[this._template]
+    if (this.templates && this._template in this.templates)  return this.templates[this._template]
     return null
   }
 
   get templatesNames(): Array<string> {
-    return Object.keys(this.templates)
+    return this.templates
+      ? Object.keys(this.templates)
+      : []
   }
 
   set cols(v) {
@@ -108,14 +128,6 @@ export class BlockComponent implements OnInit, AfterViewInit {
 
   get top(): number {
     return this.y * (this.parent.blocksHeight + this.parent.margin);
-  }
-
-  get gridCols() : number {
-    return Math.floor(this.width / this.blocksWidth)
-  }
-
-  get gridLines() : number {
-    return Math.floor(this.height / this.blocksHeight)
   }
 
   startDrag(e: any) {

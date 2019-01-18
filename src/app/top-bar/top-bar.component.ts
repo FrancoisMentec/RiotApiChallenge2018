@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-
+import { PopupComponent } from '../popup/popup.component'
 import { EditGridService } from '../edit-grid.service';
 
 @Component({
@@ -9,9 +9,11 @@ import { EditGridService } from '../edit-grid.service';
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent implements OnInit {
+  @ViewChild('regionPopup') regionPopup: PopupComponent;
   minimized : boolean = false;
   summoner : String;
-  region : String = 'euw';
+  region : String = 'EUW';
+  regions: Array<string> = ['EUW', 'NA', 'KR']
 
   constructor(private editGridService: EditGridService, private router: Router, private route: ActivatedRoute) {
   }

@@ -30,23 +30,23 @@ export class GridLayoutComponent implements OnInit {
 
   ngOnInit() {
     let c = this.dataService.getCookie('DefaultConfig')
-    if (c) this.loadConfig(c) // There is a config by default
+    if (this.configsNames.indexOf(c) >= 0) this.loadConfig(c) // There is a config by default
     else if (this.configsNames.length > 0) this.loadConfig(this.configsNames[0])
     else {
       this.addBlock(0, 0, 1, 1, 'summoner')
       this.addBlock(4, 0, 1, 8, 'champions')
       this.addBlock(0, 1, 1, 2, 'leagues')
       this.addBlock(1, 0, 1, 3)
-      this.saveConfig('default')
+      this.saveConfig('default', false)
     }
   }
 
-  saveConfig(name: string) {
+  saveConfig(name: string, notify: boolean = true) {
     this._configName = name
     let configs = JSON.parse(this.dataService.getCookie('GridLayoutConfigs')) || {}
     configs[name] = this.config
     this.dataService.setCookie('GridLayoutConfigs', configs)
-    alert(`Config saved as "${name}"`)
+    if (notify) alert(`Config saved as "${name}"`)
   }
 
   loadConfig(name: string) {

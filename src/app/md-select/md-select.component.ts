@@ -8,9 +8,9 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class MdSelectComponent implements OnInit {
 
   @Input() value: any;
-  @Input() values: array = [];
+  @Input() values: Array<any> = [];
   @Input() label: string;
-  @Output() valueChange: EventEmitter = new EventEmitter<>();
+  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
   notEmpty: string = '';
 
   constructor() { }

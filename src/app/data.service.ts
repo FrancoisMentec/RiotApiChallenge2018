@@ -21,8 +21,8 @@ export class DataService {
   _no_summoner = {"icon": "http://ddragon.canisback.com/latest/img/profileicon/0.png", "name": "none", "summonerLevel": 0}
   _summoner = null;
 
-  _no_league = {"RANKED_FLEX_TT":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_SOLO_5x5":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_FLEX_SR":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0}}
-  _league = null;
+  _no_leagues = {"RANKED_FLEX_TT":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_SOLO_5x5":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0},"RANKED_FLEX_SR":{"wins":0,"winrate":0,"leaguePoints":0,"rank":"","leagueName":"","games":0,"tier":"Unranked","losses":0}}
+  _leagues = null;
 
   _no_masteries = [];
   _masteries = null;
@@ -41,9 +41,9 @@ export class DataService {
       console.error(err)
     })
 
-    this.getData(LEAGUE_URL).then(league => {
-      this._league = league
-      console.log(this.league)
+    this.getData(LEAGUE_URL).then(leagues => {
+      this._leagues = leagues
+      console.log(this.leagues)
     }).catch(err => {
       console.error(err)
     })
@@ -61,9 +61,9 @@ export class DataService {
     else return this._no_summoner
   }
 
-  get league() {
-    if (this._league) return this._league
-    else return this._no_league
+  get leagues() {
+    if (this._leagues) return this._leagues
+    else return this._no_leagues
   }
 
   get masteries() {
@@ -95,7 +95,7 @@ export class DataService {
     document.cookie = `${name}=${value}; ${expires}${cpath}`;
   }
 
-  private getCookie(name: string) {
+  getCookie(name: string) {
     let cookies: Array<string> = document.cookie.split(';');
     let cookieName = `${name}=`;
     let cookie: string;
