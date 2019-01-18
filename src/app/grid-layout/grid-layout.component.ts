@@ -12,10 +12,13 @@ import { PopupComponent } from '../popup/popup.component'
 })
 export class GridLayoutComponent implements OnInit {
   @ViewChild('settings') popup: PopupComponent;
+  @ViewChild('importPopup') importPopup: PopupComponent;
+  @ViewChild('configInput') configInput;
   @ViewChild('grid') grid;
   @ViewChild('grid', { read: ViewContainerRef }) blocksContainer: ViewContainerRef;
 
   private _configName: string = 'default'
+  configToImport: string = '';
   configNameToSave: string; // Used for the text-field to save config
   @Input() blocksWidth = 250;
   @Input() blocksHeight = 100;
@@ -76,6 +79,10 @@ export class GridLayoutComponent implements OnInit {
     }
   }
 
+  get configText(): string {
+    return JSON.stringify(this.config)
+  }
+
   /**
    * Load the grid from a config object
    */
@@ -105,6 +112,17 @@ export class GridLayoutComponent implements OnInit {
   get configsNames (): Array<string> {
     let configs = JSON.parse(this.dataService.getCookie('GridLayoutConfigs')) || {}
     return Object.keys(configs)
+  }
+
+  exportConfig() {
+    this.configInput.nativeElement.select()
+    document.execCommand('copy')
+    alert('Config copied to clipboard')
+  }
+
+  importConfig() {
+    this.config = JSON.parse(this.configToImport)
+    this.importPopup.hide()
   }
 
   get viewClass() {

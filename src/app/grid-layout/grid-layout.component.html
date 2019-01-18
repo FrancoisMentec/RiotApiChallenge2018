@@ -15,7 +15,10 @@
   <md-select label="Config" [(value)]="configName" [values]="configsNames"></md-select>
   <h5>Save config</h5>
   <textfield label="Config name" [(value)]="configNameToSave"></textfield>
+  <input #configInput style="width: 1px; height: 1px; margin: 0; padding: 0; border: none" [value]="configText">
   <div style="text-align: right">
+    <button (click)="exportConfig()">export</button>
+    <button (click)="importPopup.show()">import</button>
     <button (click)="saveConfig(configNameToSave)">save</button>
   </div>
   <h5>Settings</h5>
@@ -33,5 +36,14 @@
   height: {{height}}<br>-->
   <div style="text-align: right">
     <button (click)="settings.hide()">confirm</button>
+  </div>
+</popup>
+
+<popup title="Import config" #importPopup>
+  Paste the config in the textfield bellow.
+  <textfield label="Config" [(value)]="configToImport"></textfield>
+  <div style="text-align: right">
+    <button (click)="importPopup.hide()">cancel</button>
+    <button (click)="importConfig()">import</button>
   </div>
 </popup>
