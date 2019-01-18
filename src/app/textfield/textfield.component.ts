@@ -8,13 +8,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TextfieldComponent implements OnInit {
 
   @Input() label: string;
-  @Input() value = '';
+  @Input() value: any = '';
+  @Input() min: number = null;
   @Input() type: string = 'string';
   @Output() valueChange: EventEmitter = new EventEmitter<>();
+  notEmpty = '';
 
   constructor() { }
 
   ngOnInit() {
+    this.notEmpty = typeof this.value != 'string' || this.value.length > 0
+      ? 'not-empty'
+      : ''
   }
 
   /*get value() {
@@ -31,14 +36,23 @@ export class TextfieldComponent implements OnInit {
   }*/
 
   emit() {
-    if (this.type === 'number') this.valueChange.emit(parseFloat(this.value))
+    this.notEmpty = typeof this.value != 'string' || this.value.length > 0
+      ? 'not-empty'
+      : ''
+    if (this.type === 'number') {
+      let val = parseFloat(this.value)
+      if (this.value.length == 0) val = this.min != null ? this.min : 0
+      if (this.min != null) val = Math.max(this.min, val)
+      this.valueChange.emit(val)
+    }
     else this.valueChange.emit(this.value)
   }
 
-  get notEmpty() {
-    return this.value && (typeof this.value != 'string' || this.value.length > 0)
+  /*get notEmpty() {
+    console.log(typeof this.value)
+    return typeof this.value != 'string' || this.value.length > 0
       ? 'not-empty'
       : ''
-  }
+  }*/
 
 }

@@ -23,7 +23,7 @@ export class TopBarComponent implements OnInit {
         this.minimized = val.url != '/'
         if (params[0] === 'summoner') {
           this.region = params[1]
-          this.summoner = params[2]
+          this.summoner = decodeURIComponent(params[2])
         }
       }
     })

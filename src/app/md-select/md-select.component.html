@@ -1,0 +1,7 @@
+<div class="select">
+  <select [(ngModel)]="value" (ngModelChange)="emit()">
+    <option *ngFor="let value of values" [value]=value>{{ value }}</option>
+  </select>
+  <label [ngClass]="notEmpty">{{ label }}</label>
+  <div class="arrow">arrow_drop_down</div>
+</div>

@@ -44,12 +44,18 @@
 
 .option-bar > * {
   margin-right: 12px;
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 .option-bar > button {
   height: 40px;
   line-height: 40px;
+  margin-top: 12px;
+}
+
+.option-bar > .select {
+  display: inline-block;
+  margin-top: 4px;
 }
 
 .edit-toggle {
@@ -61,6 +67,7 @@
   -webkit-appearance: unset;
   vertical-align: middle;
   margin: 0;
+  margin-top: 16px;
   position: relative;
   outline: none;
   cursor: pointer;
@@ -149,7 +156,7 @@
 .search-input {
   box-sizing: border-box;
   vertical-align: top;
-  min-width: 200px;
+  width: 200px;
   height: 100%;
   border: none;
   background-color: transparent;

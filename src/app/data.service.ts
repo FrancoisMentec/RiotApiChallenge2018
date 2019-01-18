@@ -31,6 +31,8 @@ export class DataService {
     this.loadData()
   }
 
+  // API
+
   loadData() {
     this.getData(SUMMONER_URL).then(summoner => {
       this._summoner = summoner
@@ -81,5 +83,29 @@ export class DataService {
         reject(error)
       })
     })
+  }
+
+  // Coockie
+  setCookie(name: string, value, expireDays: number = 365, path: string = '/') {
+    if (typeof value == "object") value = JSON.stringify(value)
+    let d:Date = new Date();
+    d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
+    let expires:string = `expires=${d.toUTCString()}`;
+    let cpath:string = path ? `; path=${path}` : '';
+    document.cookie = `${name}=${value}; ${expires}${cpath}`;
+  }
+
+  private getCookie(name: string) {
+    let cookies: Array<string> = document.cookie.split(';');
+    let cookieName = `${name}=`;
+    let cookie: string;
+
+    for (let i = 0; i < cookies.length; i++) {
+      cookie = cookies[i].replace(/^\s+/g, '');
+      if (cookie.indexOf(cookieName) == 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
+    }
+    return null
   }
 }

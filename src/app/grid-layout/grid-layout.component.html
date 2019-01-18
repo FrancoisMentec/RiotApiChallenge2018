@@ -10,12 +10,18 @@
   </div>
 </div>
 
-<popup title="Grid Layout Settings" #settings>
-  <textfield label="Columns" type="number" [(value)]="cols"></textfield>
-  <textfield label="Lines" type="number" [(value)]="lines"></textfield>
+<popup title="Grid Layout" #settings>
+  <h5>Load Configs</h5>
+  <md-select label="Config" [(value)]="configName" [values]="configsNames"></md-select>
+  <h5>Save config</h5>
+  <textfield label="Config name" [(value)]="configNameToSave"></textfield>
+  <button (click)="saveConfig(configNameToSave)">save</button>
+  <h5>Settings</h5>
+  <textfield label="Columns" type="number" [(value)]="cols" min='1'></textfield>
+  <textfield label="Lines" type="number" [(value)]="lines" min='1'></textfield>
   <textfield label="Margin" type="number" [(value)]="margin"></textfield>
-  <textfield label="Blocks width" type="number" [(value)]="blocksWidth"></textfield>
-  <textfield label="Blocks height" type="number" [(value)]="blocksHeight"></textfield>
+  <textfield label="Blocks width" type="number" [(value)]="blocksWidth" min='1'></textfield>
+  <textfield label="Blocks height" type="number" [(value)]="blocksHeight" min='1'></textfield>
   <!--cols: {{cols}}<br>
   lines: {{lines}}<br>
   margin: {{margin}}<br>
@@ -23,5 +29,7 @@
   blocksHeight: {{blocksHeight}}<br>
   width: {{width}}<br>
   height: {{height}}<br>-->
-  <button (click)="settings.hide()">Confirm</button>
+  <div style="text-align: right">
+    <button (click)="settings.hide()">confirm</button>
+  </div>
 </popup>

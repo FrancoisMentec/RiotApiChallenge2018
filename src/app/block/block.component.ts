@@ -19,20 +19,20 @@ export class BlockComponent implements OnInit, AfterViewInit {
   settings = {
     soloQ: true,
     flex: true,
+    displayLeagueIcon: true,
+    displayLeagueRank: true,
     displayLeagueGames: true,
     displayLeagueWinrate: true
   }
 
   // Attributes
+  visible: boolean = true;
   parent : GridLayoutComponent;
   selfRef;
-  showSettings : boolean = false;
-  _cols : number = 1;
-  _lines : number = 1;
   x : number = 0;
   y : number = 0;
-  blocksWidth : number = 25;
-  blocksHeight : number = 25;
+  _cols : number = 1;
+  _lines : number = 1;
 
   constructor(private editGridService: EditGridService, private dataService: DataService) {
   }
@@ -44,6 +44,17 @@ export class BlockComponent implements OnInit, AfterViewInit {
     this.templates.summoner = this.templateSummoner
     this.templates.champions = this.templateChampions
     this.templates.leagues = this.templateLeagues
+  }
+
+  get config() {
+    return {
+      x: this.x,
+      y: this.y,
+      cols: this.cols,
+      lines: this.lines,
+      template: this._template,
+      settings: this.settings
+    }
   }
 
   set template(template: string) {
@@ -120,11 +131,6 @@ export class BlockComponent implements OnInit, AfterViewInit {
   startResize(e: any) {
     e.stopPropagation()
     this.editGridService.resizedBlock = this;
-  }
-
-  toggleSettings(e) {
-    //if (this.editGridService.edit) this.edit = !this.edit
-    this.showSettings = !this.showSettings
   }
 
   delete(e: any) {

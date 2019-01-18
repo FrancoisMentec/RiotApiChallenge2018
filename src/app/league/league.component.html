@@ -1,7 +1,9 @@
 <div class="wrapper">
-  <img class="icon" [src]="league.image">
-  <div class="name">{{ league.tier }} {{ league.rank }}</div>
+  <div *ngIf="name" class="name">{{ name }}</div>
+  <img *ngIf="displayIcon" class="icon" [src]="league.image">
+  <div *ngIf="displayRank" class="rank">{{ league.tier }} {{ league.rank }}</div>
   <div class="stats">
-    <span *ngIf="displayGames">{{ league.wins + league.losses }} Games</span><br>
-    <span *ngIf="displayWinrate">{{ winrate }}% Winrate</span>
+    <div *ngIf="displayGames">{{ league.wins + league.losses }} Games</div>
+    <div *ngIf="displayWinrate">{{ winrate }}% Winrate</div>
+  </div>
 </div>

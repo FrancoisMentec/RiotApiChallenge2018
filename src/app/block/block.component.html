@@ -1,4 +1,4 @@
-<div class="block" [ngClass]="editGridService.edit ? 'show-settings' : ''" [ngStyle]="{'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}">
+<div class="block" [ngClass]="editGridService.edit ? 'show-settings' : ''" [ngStyle]="{'display': visible ? 'inline-block' : 'none', 'width.px': width, 'height.px': height, 'left.px': left, 'top.px': top, 'margin.px': margin}">
   <div class="wrapper">
     <!-- edit -->
     <div class="edit">
@@ -65,9 +65,9 @@ How to create a new template:
 <ng-template #leagues>
   <div class="leagues-wrapper">
     <div class="wrapper">
-      <league *ngIf="settings.soloQ" [league]="dataService.league.RANKED_SOLO_5x5" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
-      <league *ngIf="settings.flex" [league]="dataService.league.RANKED_FLEX_SR" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
-      <league *ngIf="settings.tt" [league]="dataService.league.RANKED_FLEX_TT" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.soloQ" name="SoloQ" [league]="dataService.league.RANKED_SOLO_5x5" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.flex" name="Flex" [league]="dataService.league.RANKED_FLEX_SR" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
+      <league *ngIf="settings.tt" name="3v3" [league]="dataService.league.RANKED_FLEX_TT" [displayIcon]="settings.displayLeagueIcon" [displayRank]="settings.displayLeagueRank" [displayGames]="settings.displayLeagueGames" [displayWinrate]="settings.displayLeagueWinrate"></league>
     </div>
   </div>
   <div class="settings">
@@ -76,6 +76,8 @@ How to create a new template:
     <input type="checkbox" [(ngModel)]="settings.flex"><label>Flex 5v5</label><br>
     <input type="checkbox" [(ngModel)]="settings.tt"><label>Flex 3v3</label><br>
     <h5>Data to display :</h5>
+    <input type="checkbox" [(ngModel)]="settings.displayLeagueRank"><label>Rank</label><br>
+    <input type="checkbox" [(ngModel)]="settings.displayLeagueIcon"><label>Icon</label><br>
     <input type="checkbox" [(ngModel)]="settings.displayLeagueGames"><label>Number of games</label><br>
     <input type="checkbox" [(ngModel)]="settings.displayLeagueWinrate"><label>Winrate</label>
   </div>

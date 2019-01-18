@@ -11,10 +11,13 @@ label {
   background-color: white;
   padding-left: 3px;
   padding-right: 3px;
+  height: 19px;
+  line-height: 19px;
+  pointer-events: none;
 }
 
 input:active + label, input:focus + label, label.not-empty {
-  top: 3px;
+  top: 1px;
   font-size: 0.8em;
 }
 

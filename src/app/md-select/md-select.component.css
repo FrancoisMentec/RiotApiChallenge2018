@@ -1,0 +1,76 @@
+.select {
+  display: inline-block;
+  position: relative;
+  height: 56px;
+  line-height: 56px;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+select {
+  display: inline-block;
+  transition: 0.2s;
+  box-sizing: border-box;
+  width: 280px;
+  height: 56px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 14px;
+  padding-right: 32px;
+  border: 1px solid var(--inactive-color);
+  border-radius: 4px;
+  -webkit-appearance: unset;
+  outline: none;
+  cursor: pointer;
+  /*background-color: white;
+  color: black;*/
+}
+
+select:hover, select:active, select:focus {
+  border-width: 2px;
+  padding-left: 13px;
+  padding-right: 31px;
+}
+
+select:active, select:focus {
+  border-color: var(--main-bg-color)
+}
+
+.arrow {
+  display: inline-block;
+  font-family: Material-Icons;
+  color: black;
+  font-size: 24px;
+  position: absolute;
+  top: 26px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  user-select: none;
+  pointer-events: none;
+}
+
+label {
+  transition: 0.2s;
+  position: absolute;
+  left: 11px;
+  top: 28px;
+  color: var(--inactive-color);
+  background-color: white;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 19px;
+  line-height: 19px;
+  pointer-events: none;
+}
+
+select:active + label, select:focus + label, label.not-empty {
+  top: 1px;
+  font-size: 0.8em;
+}
+
+select:active + label, select:focus + label {
+  color: var(--main-color);
+}

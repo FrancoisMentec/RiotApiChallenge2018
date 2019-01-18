@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LeagueComponent implements OnInit {
 
   @Input() league;
+  @Input() name : string;
+  @Input() displayIcon : boolean = true;
+  @Input() displayRank : boolean = true;
   @Input() displayGames : boolean = true;
   @Input() displayWinrate : boolean = true;
 

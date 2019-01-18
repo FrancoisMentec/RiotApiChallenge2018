@@ -13,6 +13,7 @@ import { ChampionComponent } from './champion/champion.component';
 import { LeagueComponent } from './league/league.component';
 import { PopupComponent } from './popup/popup.component';
 import { TextfieldComponent } from './textfield/textfield.component';
+import { MdSelectComponent } from './md-select/md-select.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TextfieldComponent } from './textfield/textfield.component';
     ChampionComponent,
     LeagueComponent,
     PopupComponent,
-    TextfieldComponent
+    TextfieldComponent,
+    MdSelectComponent
   ],
   imports: [
     BrowserModule,

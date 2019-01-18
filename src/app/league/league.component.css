@@ -10,12 +10,17 @@
   height: auto;
 }
 
-.name {
+.rank {
   width: 100%;
   text-align: center;
   font-size: 0.9em;
   color: white;
   font-family: Roboto-Bold;
+}
+
+.name {
+  /*font-family: Roboto-Thin;*/
+  font-size: 1.1em;
 }
 
 .stats {
